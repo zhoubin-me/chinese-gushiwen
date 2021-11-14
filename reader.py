@@ -18,9 +18,10 @@ for fname in fs:
                 continue
             if '节选' in title:
                 continue
-            dynasties = ['先秦', '魏晋', '南北朝', '五代', '两汉', '宋代', '隋代', '唐代']
+            dynasties = ['先秦', '魏晋', '南北朝', '两汉', '宋代', '隋代', '唐代']
             if dynasty not in dynasties:
                 continue
+            dynasty = dynasty.replace('代', '')
             # if '明代' not in dynasty:
             #     continue
             # if not ('唐代' in dynasty or '宋代' in dynasty):
