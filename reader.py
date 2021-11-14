@@ -3,6 +3,7 @@ import json
 
 fs = glob.glob('guwen/*.json')
 data = []
+
 for fname in fs:
     with open('guwen/guwen0-1000.json', encoding='utf-8') as f:
         lines = f.readlines()
@@ -17,9 +18,15 @@ for fname in fs:
                 continue
             if '节选' in title:
                 continue
-            if not ('唐代' in dynasty or '宋代' in dynasty):
+            dynasties = ['先秦', '魏晋', '南北朝', '五代', '两汉', '宋代', '隋代', '唐代']
+            if dynasty not in dynasties:
                 continue
-
+            # if '明代' not in dynasty:
+            #     continue
+            # if not ('唐代' in dynasty or '宋代' in dynasty):
+            #     continue
+            
+            # dynasty = dynasty.replace('代', '')
             if '·' in title:
                 titles = title.split('·')
                 if titles[1].strip()[0] == '其':
@@ -44,3 +51,4 @@ for fname in fs:
 with open('jueju.json', 'w') as f:
     json.dump(data, f)
 print(len(data))
+print(set([x['dynasty'] for x in data]))
